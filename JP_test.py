@@ -28,10 +28,20 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from PIL import Image
+import sweetviz as sv
+import streamlit.components.v1 as components
+from pandas_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
+import codecs
 
 image = Image.open('cover.jpg')
 matplotlib.use("Agg")
 st.set_option('deprecation.showfileUploaderEncoding', False)
+
+def st_display_sweetviz(report_html,width=1500,height=1000):
+	report_file = codecs.open(report_html,'r')
+	page = report_file.read()
+	components.html(page,width=width,height=height,scrolling=True)
 
 class DataFrame_Loader():
 
@@ -393,14 +403,37 @@ st.image(image, use_column_width=True)
 
 
 def main():
+
+
     st.title("IST Automated EDA Test")
 
     st.info("JP EDA app test")
     """https://github.com/joeperrotta/streamlit"""
-    activities = ["General EDA", "EDA For Linear Models", "Model Building for Classification Problem"]
+    activities = ["Pandas Profile", "SweetViz", "General EDA", "EDA For Linear Models", "Model Building for Classification Problem"]
     choice = st.sidebar.selectbox("Select Activities", activities)
 
-    if choice == 'General EDA':
+    if choice == "Pandas Profile":
+        st.subheader("Automated EDA with Pandas Profile")
+        data_file = st.file_uploader("Upload CSV", type=['csv'])
+        if data_file is not None:
+            df = pd.read_csv(data_file)
+            st.dataframe(df.head())
+            profile = ProfileReport(df)
+            st_profile_report(profile)
+
+    # elif choice == "Sweetviz":
+    #     st.subheader("Automated EDA with Sweetviz")
+    #     data = st.file_uploader("Upload a Dataset", type=["csv"])
+    #     if data is not None:
+    #         df = pd.read_csv(data)
+    #         st.dataframe(df.head())
+    #         if st.button("Generate Sweetviz Report"):
+    #             # Normal Workflow
+    #             report = sv.analyze(df)
+    #             report.show_html()
+    #             st_display_sweetviz("SWEETVIZ_REPORT.html")
+
+    elif choice == 'General EDA':
         st.subheader("Exploratory Data Analysis")
 
         data = st.file_uploader("Upload a Dataset", type=["csv", "txt"])
@@ -545,6 +578,8 @@ def main():
             if st.button("Generate Word Cloud"):
                 st.write(dataframe.wordcloud(df))
                 st.pyplot()
+
+
 
     elif choice == 'EDA For Linear Models':
         st.subheader("EDA For Linear Models")
