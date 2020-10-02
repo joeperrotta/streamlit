@@ -393,7 +393,7 @@ st.image(image, use_column_width=True)
 
 
 def main():
-    st.title("Machine Learning Application for Automated EDA")
+    st.title("IST Automated EDA Test")
 
     st.info("JP EDA app test")
     """https://github.com/joeperrotta/streamlit"""
