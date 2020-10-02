@@ -668,7 +668,6 @@ def main():
                 x = model.XGb_classifier(x_train, y_train, x_test, y_test)
                 st.write(x)
 
-      st.markdown('SweetViz and PandasProfiling coming soon')
 
 #     st.markdown('Automation is **_really_ _cool_**.')
 #     st.markdown('<style>h1{color: red;}</style>', unsafe_allow_html=True)
