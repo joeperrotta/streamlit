@@ -668,10 +668,10 @@ def main():
                 x = model.XGb_classifier(x_train, y_train, x_test, y_test)
                 st.write(x)
 
-    st.markdown('Automation is **_really_ _cool_**.')
-    st.markdown('<style>h1{color: red;}</style>', unsafe_allow_html=True)
-    st.title("Credits and Inspiration")
-    """https://pycaret.org/"""
+#     st.markdown('Automation is **_really_ _cool_**.')
+#     st.markdown('<style>h1{color: red;}</style>', unsafe_allow_html=True)
+#     st.title("Credits and Inspiration")
+#     """https://pycaret.org/"""
 
 
 if __name__ == '__main__':
