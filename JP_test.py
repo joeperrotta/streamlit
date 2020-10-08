@@ -33,6 +33,7 @@ from PIL import Image
 image = Image.open('cover.jpg')
 matplotlib.use("Agg")
 st.set_option('deprecation.showfileUploaderEncoding', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 class DataFrame_Loader():
