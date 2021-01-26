@@ -27,9 +27,9 @@ def match_phrase(key, value):
 def main():
     if choice == "Table Upload":
         st.write("Video Tutorial")
-        video_file = open('myvideo.mov', 'rb')
-        video_bytes = video_file.read()
-        st.video(video_bytes)
+#         video_file = open('myvideo.mov', 'rb')
+#         video_bytes = video_file.read()
+#         st.video(video_bytes)
 
         st.title("Query DSL Generator")
         #need to add storage features
