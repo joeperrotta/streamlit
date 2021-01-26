@@ -13,5 +13,6 @@ streamlit-pandas-profiling==0.1.1
 networkx
 pyvis
 imagehash
-#subprocess
-#json
+dhash
+streamlit-terran-timeline
+terran
