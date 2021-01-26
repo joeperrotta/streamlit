@@ -12,3 +12,4 @@ xgboost==1.1.1
 streamlit-pandas-profiling==0.1.1
 networkx
 pyvis
+imagehash
